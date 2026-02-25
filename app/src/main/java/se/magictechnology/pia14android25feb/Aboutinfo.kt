@@ -10,15 +10,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun TodoDetail(todo : TodoItem) {
+fun Aboutinfo() {
     Column(modifier = Modifier.fillMaxSize().padding(40.dp)) {
-        Text("TODO DETAIL")
-        Text(todo.title)
+        Text("ABOUT INFO READ")
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
-fun TodoDetailPreview() {
-    TodoDetail(todo = TodoItem(title = "Exempel ABC"))
+fun AboutinfoPreview() {
+    Aboutinfo()
 }

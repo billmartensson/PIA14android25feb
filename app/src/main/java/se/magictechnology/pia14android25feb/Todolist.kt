@@ -11,20 +11,38 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Todolist(godetail: () -> Unit) {
+fun Todolist(godetail: (todo : TodoItem) -> Unit, goabout : () -> Unit) {
     Column(modifier = Modifier.fillMaxSize().padding(40.dp)) {
         Text("TODOLIST")
 
         Button(onClick = {
-            godetail()
+            var todo = TodoItem("Köp mat")
+
+            godetail(todo)
         }) {
-            Text("Go to detail")
+            Text("Köp mat")
         }
+
+        Button(onClick = {
+            var todo = TodoItem("Bygg hus")
+
+            godetail(todo)
+        }) {
+            Text("Bygga hus")
+        }
+
+
+        Button(onClick = {
+            goabout()
+        }) {
+            Text("About app")
+        }
+
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun TodolistPreview() {
-    Todolist(godetail = {})
+    Todolist(godetail = {}, goabout = {})
 }

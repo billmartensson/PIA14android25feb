@@ -1,5 +1,6 @@
 package se.magictechnology.pia14android25feb
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -8,6 +9,12 @@ import androidx.navigation.NavHost
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import kotlinx.serialization.Serializable
+
+
+@Serializable
+data class TodoItem(val title : String)
 
 @Composable
 fun TodoNav() {
@@ -20,14 +27,25 @@ fun TodoNav() {
     ) {
 
         composable(route = "todolist") {
-            Todolist(godetail = {
-                navController.navigate("tododetail")
-            })
+            Todolist(
+                godetail = { todo ->
+                    navController.navigate(todo)
+                },
+                goabout = {
+                    navController.navigate("about")
+                }
+            )
         }
 
-        composable(route = "tododetail") {
-            TodoDetail()
+        composable<TodoItem> { backStackEntry ->
+            val todo : TodoItem = backStackEntry.toRoute()
+            TodoDetail(todo)
         }
+
+        composable(route = "about") {
+            Aboutinfo()
+        }
+
 
     }
 

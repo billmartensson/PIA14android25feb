@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun Todolist(godetail: (todo : TodoItem) -> Unit, goabout : () -> Unit) {
-    Column(modifier = Modifier.fillMaxSize().padding(40.dp)) {
+    Column(modifier = Modifier.fillMaxSize().padding(0.dp)) {
         Text("TODOLIST")
 
         Button(onClick = {

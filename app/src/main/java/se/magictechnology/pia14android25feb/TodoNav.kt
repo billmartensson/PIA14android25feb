@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -17,8 +18,7 @@ import kotlinx.serialization.Serializable
 data class TodoItem(val title : String)
 
 @Composable
-fun TodoNav() {
-    val navController = rememberNavController()
+fun TodoNav(navController : NavHostController) {
 
     NavHost(
         navController = navController,
@@ -54,5 +54,5 @@ fun TodoNav() {
 @Preview(showBackground = true)
 @Composable
 fun TodoNavPreview() {
-    TodoNav()
+    TodoNav(rememberNavController())
 }
